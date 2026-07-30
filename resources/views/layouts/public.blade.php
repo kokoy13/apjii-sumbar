@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'APJII Sumatera Barat — Asosiasi Penyelenggara Jasa Internet Indonesia')</title>
-    <meta name="description" content="@yield('meta_description', 'Website Resmi APJII Wilayah Sumatera Barat. Informasi Indonesia Internet Exchange (IIX) Padang, kegiatan rakerwil, berita teknologi, dan keanggotaan ISP.')">
+    <meta name="description" content="@yield('meta_description', 'Website Resmi APJII Wilayah Sumatera Barat. Informasi Indonesia Internet Exchange (IIX) Padang, kegiatan rakerwil, berita teknologi, dan anggota ISP.')">
 
     <link rel="shortcut icon" href="/img/logo-apjii.jpg" type="image/x-icon">
 
@@ -42,7 +42,7 @@
                     <a href="{{ route('home') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Beranda</a>
                     <a href="{{ route('tentang-kami') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Tentang Kami</a>
                     <a href="{{ route('kepengurusan') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Kepengurusan</a>
-                    <a href="{{ route('keanggotaan') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Keanggotaan</a>
+                    <a href="{{ route('keanggotaan') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Anggota</a>
                     <a href="{{ route('posts.index') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Berita & Kegiatan</a>
                     <a href="{{ route('kontak') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Kontak</a>
                     <a href="{{ route('download') }}" class="text-sm font-medium text-slate-700 hover:text-apjii-accent transition-colors">Download</a>
@@ -72,7 +72,7 @@
             <a @click="open = false" href="{{ route('home') }}" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Beranda</a>
             <a @click="open = false" href="{{ route('tentang-kami') }}" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Tentang Kami</a>
             <a @click="open = false" href="{{ route('kepengurusan') }}#iix" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Kepengurusan</a>
-            <a @click="open = false" href="{{ route('keanggotaan') }}#iix" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Keanggotaan</a>
+            <a @click="open = false" href="{{ route('keanggotaan') }}#iix" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Anggota</a>
             <a @click="open = false" href="{{ route('posts.index') }}" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Berita & Kegiatan</a>
             <a @click="open = false" href="{{ route('kontak') }}" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Kontak</a>
             <a @click="open = false" href="{{ route('download') }}" class="block px-3 py-2 text-base font-medium text-slate-700 rounded-lg hover:bg-slate-50">Download</a>
@@ -110,7 +110,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="{{ route('tentang-kami') }}" class="hover:text-white transition">Tentang kami</a></li>
                         <li><a href="{{ route('kepengurusan') }}" class="hover:text-white transition">Kepengurusan</a></li>
-                        <li><a href="{{ route('keanggotaan') }}" class="hover:text-white transition">Keanggotaan</a></li>
+                        <li><a href="{{ route('keanggotaan') }}" class="hover:text-white transition">Anggota</a></li>
                         <li><a href="{{ route('posts.index') }}" class="hover:text-white transition">Warta & Berita</a></li>
                         <li><a href="{{ route('download') }}" class="hover:text-white transition">Download</a></li>
                     </ul>

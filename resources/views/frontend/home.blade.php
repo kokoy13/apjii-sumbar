@@ -50,7 +50,7 @@
 
                     <div class="grid grid-cols-2 gap-4">
                         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                            <span class="text-3xl font-extrabold text-apjii-blue">50+</span>
+                            <span class="text-3xl font-extrabold text-apjii-blue">10+</span>
                             <span class="block text-xs font-medium text-slate-500 mt-1">Penyedia Jasa Internet (ISP)</span>
                         </div>
                         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">

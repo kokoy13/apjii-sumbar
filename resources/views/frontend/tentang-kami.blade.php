@@ -31,15 +31,6 @@
                     <h3 class="text-xl font-bold text-apjii-navy border-b border-slate-100 pb-4">Cakupan & Dampak Regional</h3>
                     
                     <div class="space-y-4">
-                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-2xl font-extrabold text-apjii-blue">Simpul IIX</span>
-                                <span class="block text-xs font-medium text-slate-500">Node Padang Exchange</span>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                Active Node
-                            </span>
-                        </div>
 
                         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                             <div>
@@ -74,9 +65,9 @@
                 <div class="w-12 h-12 rounded-xl bg-apjii-subtle text-apjii-blue flex items-center justify-center font-bold text-xl">
                     01
                 </div>
-                <h4 class="text-xl font-bold text-slate-900">Kedaulatan Trafik Lokal</h4>
+                <h4 class="text-xl font-bold text-slate-900">Survei & Validasi Data</h4>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Mengoptimalkan titik kumpul internet exchange (IIX) di Padang agar interkoneksi data antar-ISP lokal terjadi tanpa perlu transit ke luar daerah.
+                    Menyediakan data survei berkala mengenai penetrasi internet dan tren perilaku pengguna digital di Sumbar sebagai acuan ilmiah bagi pengambilan kebijakan daerah dan pelaku industri.
                 </p>
             </div>
 

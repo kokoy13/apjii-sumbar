@@ -49,7 +49,7 @@
                         <div class="space-y-1">
                             <span class="text-xs font-extrabold text-apjii-accent uppercase tracking-wider block">Alamat Sekretariat</span>
                             <p class="text-sm font-semibold text-slate-800 leading-snug">
-                                Jl Batang Anai No 4A, GOR H Agus Salim, Kel. Rimbo Kaluang, Kota Padang, Sumatera Barat 25111
+                                TBA
                             </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="space-y-1">
                             <span class="text-xs font-extrabold text-apjii-accent uppercase tracking-wider block">Email Surat & Informasi</span>
                             <p class="text-sm font-bold text-slate-900 group-hover:text-apjii-blue transition">
-                                darmawi.apjiisumbar@gmail.com
+                                TBA
                             </p>
                         </div>
                     </a>
@@ -82,7 +82,7 @@
                 </div>
 
                 <!-- Google Maps Embedded Container -->
-                <div class="rounded-3xl overflow-hidden border border-slate-200/80 shadow-card bg-slate-100 h-64 relative">
+                <!-- <div class="rounded-3xl overflow-hidden border border-slate-200/80 shadow-card bg-slate-100 h-64 relative">
                     <iframe 
                         title="Lokasi APJII Sumbar"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.288219665313!2d100.35467047588001!3d-0.9339943990569837!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b8e219736f1f%3A0x6b4465d3888adcfb!2sGOR%20H.%20Agus%20Salim!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
@@ -91,7 +91,7 @@
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
-                </div>
+                </div> -->
             </div>
 
             <!-- Form Side (7 Cols) -->
