@@ -45,7 +45,7 @@
                         <div class="flex items-center space-x-4 sm:space-x-6">
                             <!-- Avatar Image Container -->
                             <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-2xl overflow-hidden shadow-md border-2 border-amber-400/80 bg-slate-100 shrink-0 relative group">
-                                <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                <img lazy="loading" class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
                                      src="{{ $ketua['avatar'] }}" 
                                      alt="{{ $ketua['name'] }}"
                                      loading="lazy">
@@ -85,7 +85,7 @@
                                 <div class="flex items-center space-x-4 sm:space-x-5">
                                     <!-- Avatar Image Container -->
                                     <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100 shrink-0 shadow-xs group">
-                                        <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                        <img lazy="loading" class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
                                              src="{{ $inti['avatar'] }}" 
                                              alt="{{ $inti['name'] }}"
                                              loading="lazy">
@@ -127,7 +127,7 @@
                                 <div class="flex items-center space-x-4 sm:space-x-5">
                                     <!-- Avatar Image Container -->
                                     <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100 shrink-0 shadow-xs group">
-                                        <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                        <img lazy="loading" class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
                                              src="{{ $bidang['avatar'] }}" 
                                              alt="{{ $bidang['name'] }}"
                                              loading="lazy">
