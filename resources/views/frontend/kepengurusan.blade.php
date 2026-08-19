@@ -40,24 +40,30 @@
                         </h2>
                     </div>
 
-                    <!-- Single Full-width Item Row for Ketua -->
+                    <!-- Single Item Row for Ketua -->
                     <div class="bg-amber-50/60 hover:bg-amber-50 rounded-2xl p-5 sm:p-6 border border-amber-200/80 transition duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-center space-x-4 sm:space-x-5">
-                            <!-- Color Badge Avatar -->
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center font-extrabold text-2xl shadow-md shadow-amber-500/20 shrink-0">
-                                {{ substr($ketua['name'], 0, 1) }}
+                        <div class="flex items-center space-x-4 sm:space-x-6">
+                            <!-- Avatar Image Container -->
+                            <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-2xl overflow-hidden shadow-md border-2 border-amber-400/80 bg-slate-100 shrink-0 relative group">
+                                <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                     src="{{ $ketua['avatar'] }}" 
+                                     alt="{{ $ketua['name'] }}"
+                                     loading="lazy">
                             </div>
-                            <div>
-                                <div class="flex flex-wrap items-center gap-2 mb-1">
+                            <div class="space-y-1 min-w-0">
+                                <div class="flex flex-wrap items-center gap-2">
                                     <span class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-amber-500 text-white shadow-xs tracking-wider uppercase">
                                         {{ $ketua['role'] }}
                                     </span>
                                 </div>
-                                <h3 class="text-xl font-extrabold text-slate-900">
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
                                     {{ $ketua['name'] }}
                                 </h3>
-                                <p class="text-xs sm:text-sm font-semibold text-slate-600">
-                                    {{ $ketua['company'] }}
+                                <p class="text-xs sm:text-sm font-semibold text-slate-600 flex items-center space-x-1.5">
+                                    <svg class="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H9m4 0V5" />
+                                    </svg>
+                                    <span>{{ $ketua['company'] }}</span>
                                 </p>
                             </div>
                         </div>
@@ -77,29 +83,29 @@
                         @foreach($pengurusInti as $inti)
                             <div class="p-5 sm:p-6 bg-white hover:bg-slate-50 transition duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                 <div class="flex items-center space-x-4 sm:space-x-5">
-                                    <!-- Color Badge Avatar -->
-                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-apjii-navy to-apjii-blue text-white flex items-center justify-center font-extrabold text-xl shadow-sm shrink-0">
-                                        {{ substr($inti['name'], 0, 1) }}
+                                    <!-- Avatar Image Container -->
+                                    <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100 shrink-0 shadow-xs group">
+                                        <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                             src="{{ $inti['avatar'] }}" 
+                                             alt="{{ $inti['name'] }}"
+                                             loading="lazy">
                                     </div>
-                                    <div>
-                                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                                    <div class="space-y-1 min-w-0">
+                                        <div class="flex flex-wrap items-center gap-2">
                                             <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-apjii-subtle text-apjii-blue border border-apjii-blue/20 uppercase tracking-wide">
                                                 {{ $inti['role'] }}
                                             </span>
                                         </div>
-                                        <h3 class="text-lg font-bold text-slate-900">
+                                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
                                             {{ $inti['name'] }}
                                         </h3>
-                                        <p class="text-xs sm:text-sm font-medium text-slate-500">
-                                            {{ $inti['company'] }}
+                                        <p class="text-xs sm:text-sm font-medium text-slate-500 flex items-center space-x-1.5">
+                                            <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H9m4 0V5" />
+                                            </svg>
+                                            <span>{{ $inti['company'] }}</span>
                                         </p>
                                     </div>
-                                </div>
-
-                                <div class="shrink-0">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600">
-                                        Pengurus Inti
-                                    </span>
                                 </div>
                             </div>
                         @endforeach
@@ -118,29 +124,29 @@
                     <div class="divide-y divide-slate-100 rounded-2xl border border-slate-200/80 overflow-hidden bg-slate-50/40">
                         @foreach($ketuaBidang as $bidang)
                             <div class="p-5 sm:p-6 bg-white hover:bg-slate-50/80 transition duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                <div class="flex items-start sm:items-center space-x-4 sm:space-x-5">
-                                    <!-- Numbering & Avatar Badge -->
-                                    <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-700 font-extrabold text-sm flex items-center justify-center border border-indigo-100 shrink-0">
-                                        {{ sprintf('%02d', $loop->iteration) }}
+                                <div class="flex items-center space-x-4 sm:space-x-5">
+                                    <!-- Avatar Image Container -->
+                                    <div class="w-24 h-28 sm:w-26 sm:h-30 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100 shrink-0 shadow-xs group">
+                                        <img class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105" 
+                                             src="{{ $bidang['avatar'] }}" 
+                                             alt="{{ $bidang['name'] }}"
+                                             loading="lazy">
                                     </div>
 
-                                    <div class="space-y-1">
+                                    <div class="space-y-1 min-w-0">
                                         <span class="inline-block px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60 uppercase tracking-wide">
                                             {{ $bidang['role'] }}
                                         </span>
-                                        <h3 class="text-lg font-bold text-slate-900">
+                                        <h3 class="text-lg font-bold text-slate-900 leading-snug">
                                             {{ $bidang['name'] }}
                                         </h3>
-                                        <p class="text-xs sm:text-sm font-medium text-slate-500">
-                                            {{ $bidang['company'] }}
+                                        <p class="text-xs sm:text-sm font-medium text-slate-500 flex items-center space-x-1.5">
+                                            <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0H9m4 0V5" />
+                                            </svg>
+                                            <span>{{ $bidang['company'] }}</span>
                                         </p>
                                     </div>
-                                </div>
-
-                                <div class="shrink-0 sm:text-right">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-600">
-                                        Ketua Bidang #{{ $loop->iteration }}
-                                    </span>
                                 </div>
                             </div>
                         @endforeach
@@ -153,3 +159,4 @@
     </div>
 </div>
 @endsection
+

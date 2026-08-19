@@ -74,10 +74,22 @@ class PublicPostController extends Controller
 
     public function kepengurusan()
     {
+        $ketua = asset('img/kepengurusan/darmawi.jpg');
+        $pengurus1 = asset('img/kepengurusan/budi.png');
+        $pengurus2 = asset('img/kepengurusan/aan.jpg');
+        $bidang1 = asset('img/kepengurusan/suhardedi.jpeg');
+        $bidang2 = asset('img/kepengurusan/aditya.jpg');
+        $bidang3 = asset('img/kepengurusan/riano.jpg');
+        $bidang4 = asset('img/kepengurusan/novriadi.jpg');
+        $bidang5 = asset('img/kepengurusan/amirullah.jpg');
+        $bidang6 = asset('img/kepengurusan/yonaldi.jpg');
+        $bidang7 = asset('img/kepengurusan/rusrian.jpg');
+
         $ketua = [
             'name' => 'Darmawi',
             'role' => 'Ketua Pengurus Wilayah',
             'company' => 'PT Marawa Transmisi Media',
+            'avatar' => $ketua
         ];
 
         $pengurusInti = [
@@ -85,11 +97,13 @@ class PublicPostController extends Controller
                 'name' => 'Budi S',
                 'role' => 'Sekretaris',
                 'company' => 'PT Carano Tech Solusi',
+                'avatar' => $pengurus1
             ],
             [
                 'name' => 'Aan Rizal',
                 'role' => 'Bendahara',
                 'company' => 'PT Gogiga Media Teknologi',
+                'avatar' => $pengurus2
             ],
         ];
 
@@ -97,37 +111,44 @@ class PublicPostController extends Controller
             [
                 'role' => 'Ketua Bidang Organisasi dan Layanan',
                 'name' => 'Suhardedi',
-                'company' => 'PT Gnet Biaro Akses',
+                'company' => 'PT Golden Net',
+                'avatar' => $bidang1
             ],
             [
                 'role' => 'Ketua Bidang Regulasi',
                 'name' => 'Muhammad Aditya',
                 'company' => 'PT Irama Media Flashnet',
+                'avatar' => $bidang2
             ],
             [
                 'role' => 'Ketua Bidang Hubungan Masyarakat',
                 'name' => 'Riano Oskar',
                 'company' => 'PT CinoxMedia Network Indonesia',
+                'avatar' => $bidang3
             ],
             [
                 'role' => 'Ketua Bidang Advokasi',
                 'name' => 'Novriadi',
                 'company' => 'PT Skynet Network Bersama',
+                'avatar' => $bidang4
             ],
             [
                 'role' => 'Ketua Bidang IX dan Data Center',
                 'name' => 'Amirullah',
-                'company' => 'PT Gnet Biaro Data',
+                'company' => 'PT Golden Fiber',
+                'avatar' => $bidang5
             ],
             [
                 'role' => 'Ketua Bidang Kelembagaan',
                 'name' => 'Yonaldi',
                 'company' => 'PT Media Tekno Nusantara',
+                'avatar' => $bidang6
             ],
             [
                 'role' => 'Ketua Bidang Sistem Informasi dan Pengembangan Sumber Daya Anggota',
                 'name' => 'Rusrian Yuzaf',
                 'company' => 'PT Salingka Telekomunikasi Nusantara',
+                'avatar' => $bidang7
             ],
         ];
 

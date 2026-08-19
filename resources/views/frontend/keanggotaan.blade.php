@@ -57,8 +57,8 @@
                         'website' => null,
                     ],
                     [
-                        'name' => 'PT Gnet Biaro Akses',
-                        'brand' => 'Gnet Biaro Akses',
+                        'name' => 'PT Golden Net',
+                        'brand' => 'Golde Net',
                         'logo' => null,
                         'category' => 'Penyelenggara Jasa Internet',
                         'status' => 'Anggota Penuh',
@@ -89,8 +89,8 @@
                         'website' => null,
                     ],
                     [
-                        'name' => 'PT Gnet Biaro Data',
-                        'brand' => 'Gnet Data Center',
+                        'name' => 'PT Golden Fiber',
+                        'brand' => 'Golden Fiber',
                         'logo' => null,
                         'category' => 'Jaringan & Data Center',
                         'status' => 'Anggota Penuh',
