@@ -41,8 +41,8 @@
                                 @forelse($posts as $post)
                                     <tr class="hover:bg-slate-50/80 transition duration-150">
                                         <td class="px-6 py-4 text-sm">
-                                            @if($post->featured_image)
-                                                <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-16 h-12 object-cover rounded-lg shadow-sm border border-slate-200">
+                                            @if($post->featured_image_url)
+                                                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-16 h-12 object-cover rounded-lg shadow-sm border border-slate-200">
                                             @else
                                                 <div class="w-16 h-12 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-400 font-medium">No Image</div>
                                             @endif

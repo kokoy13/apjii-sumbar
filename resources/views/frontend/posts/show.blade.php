@@ -42,9 +42,9 @@
                 </div>
 
                 <!-- Featured Image -->
-                @if($post->featured_image)
+                @if($post->featured_image_url)
                     <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200">
-                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-full max-h-[480px] object-cover">
+                        <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full max-h-[480px] object-cover">
                     </div>
                 @endif
 

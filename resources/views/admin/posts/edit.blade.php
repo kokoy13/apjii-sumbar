@@ -20,8 +20,80 @@
                 menubar: false,
                 plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
                 toolbar: 'undo redo | blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link table | code preview',
+                images_upload_url: '{{ route("admin.posts.upload-image") }}',
+                automatic_uploads: true,
+                images_upload_handler: function (blobInfo, progress) {
+                    return new Promise(function (resolve, reject) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '{{ route("admin.posts.upload-image") }}');
+                        xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                        xhr.onload = function () {
+                            if (xhr.status < 200 || xhr.status >= 300) {
+                                reject('HTTP Error: ' + xhr.status);
+                                return;
+                            }
+                            var json = JSON.parse(xhr.responseText);
+                            if (!json || typeof json.location !== 'string') {
+                                reject('Invalid JSON: ' + xhr.responseText);
+                                return;
+                            }
+                            resolve(json.location);
+                        };
+                        xhr.onerror = function () {
+                            reject('Image upload failed due to a XHR Transport error.');
+                        };
+                        var formData = new FormData();
+                        formData.append('file', blobInfo.blob(), blobInfo.filename());
+                        xhr.send(formData);
+                    });
+                },
                 content_style: 'body { font-family: "Plus Jakarta Sans", sans-serif; font-size: 15px; color: #1e293b; }'
             });
+
+            // Live Image Preview for Featured Image input
+            const imageInput = document.getElementById('featured_image');
+            const previewContainer = document.getElementById('image-preview-container');
+            const previewImg = document.getElementById('image-preview-img');
+            const previewBadge = document.getElementById('image-preview-badge');
+            const cancelBtn = document.getElementById('cancel-image-change-btn');
+            const originalSrc = "{{ $post->featured_image_url ?? '' }}";
+
+            if (imageInput) {
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        if (!file.type.startsWith('image/')) {
+                            alert('Silakan pilih file gambar yang valid.');
+                            imageInput.value = '';
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = function(evt) {
+                            previewImg.src = evt.target.result;
+                            previewContainer.classList.remove('hidden');
+                            previewBadge.textContent = 'Pratinjau Gambar Baru (Belum Disimpan)';
+                            previewBadge.className = 'text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 mt-1 inline-block';
+                            if (cancelBtn) cancelBtn.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', function() {
+                    imageInput.value = '';
+                    if (originalSrc) {
+                        previewImg.src = originalSrc;
+                        previewBadge.textContent = 'Gambar saat ini';
+                        previewBadge.className = 'text-xs text-slate-500 mt-1 block';
+                        cancelBtn.classList.add('hidden');
+                    } else {
+                        previewContainer.classList.add('hidden');
+                        previewImg.src = '';
+                    }
+                });
+            }
         });
     </script>
 
@@ -99,12 +171,19 @@
 
                             <div>
                                 <label for="featured_image" class="block text-sm font-medium text-slate-700 mb-1">Gambar Utama (Featured Image)</label>
-                                @if($post->featured_image)
-                                    <div class="mb-3">
-                                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="Preview" class="w-full h-32 object-cover rounded-lg border border-slate-200 shadow-sm">
-                                        <span class="text-xs text-slate-500 mt-1 block">Gambar saat ini</span>
+                                
+                                <div id="image-preview-container" class="mb-3 {{ $post->featured_image ? '' : 'hidden' }}">
+                                    <div class="relative group">
+                                        <img id="image-preview-img" src="{{ $post->featured_image_url ?? '' }}" alt="Preview" class="w-full h-36 object-cover rounded-lg border border-slate-200 shadow-sm">
                                     </div>
-                                @endif
+                                    <div class="flex justify-between items-center mt-1.5">
+                                        <span id="image-preview-badge" class="text-xs text-slate-500">Gambar saat ini</span>
+                                        <button type="button" id="cancel-image-change-btn" class="hidden text-xs text-rose-600 hover:text-rose-800 font-semibold underline">
+                                            Batal Ganti Gambar
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <input type="file" name="featured_image" id="featured_image" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/svg+xml" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-apjii-subtle file:text-apjii-blue hover:file:bg-apjii-blue hover:file:text-white transition">
                                 <p class="mt-1 text-xs text-slate-500">Pilih gambar baru untuk mengganti. Hanya format gambar yang diperbolehkan (PNG, JPG, JPEG, WEBP, SVG, GIF, maks 4MB).</p>
                                 @error('featured_image')

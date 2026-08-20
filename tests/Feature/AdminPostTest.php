@@ -64,4 +64,25 @@ class AdminPostTest extends TestCase
 
         $response->assertSessionHasErrors(['featured_image']);
     }
+
+    public function test_admin_can_upload_editor_image(): void
+    {
+        Storage::fake('public');
+
+        $user = User::factory()->create();
+        $file = UploadedFile::fake()->image('editor_content.jpg');
+
+        $response = $this->actingAs($user)->postJson(route('admin.posts.upload-image'), [
+            'file' => $file,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure(['location']);
+    }
+
+    public function test_featured_image_url_attribute(): void
+    {
+        $post = new Post(['featured_image' => 'posts/test.jpg']);
+        $this->assertStringContainsString('storage/posts/test.jpg', $post->featured_image_url);
+    }
 }

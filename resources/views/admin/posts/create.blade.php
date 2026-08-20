@@ -20,8 +20,68 @@
                 menubar: false,
                 plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
                 toolbar: 'undo redo | blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link table | code preview',
+                images_upload_url: '{{ route("admin.posts.upload-image") }}',
+                automatic_uploads: true,
+                images_upload_handler: function (blobInfo, progress) {
+                    return new Promise(function (resolve, reject) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '{{ route("admin.posts.upload-image") }}');
+                        xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                        xhr.onload = function () {
+                            if (xhr.status < 200 || xhr.status >= 300) {
+                                reject('HTTP Error: ' + xhr.status);
+                                return;
+                            }
+                            var json = JSON.parse(xhr.responseText);
+                            if (!json || typeof json.location !== 'string') {
+                                reject('Invalid JSON: ' + xhr.responseText);
+                                return;
+                            }
+                            resolve(json.location);
+                        };
+                        xhr.onerror = function () {
+                            reject('Image upload failed due to a XHR Transport error.');
+                        };
+                        var formData = new FormData();
+                        formData.append('file', blobInfo.blob(), blobInfo.filename());
+                        xhr.send(formData);
+                    });
+                },
                 content_style: 'body { font-family: "Plus Jakarta Sans", sans-serif; font-size: 15px; color: #1e293b; }'
             });
+
+            // Live Image Preview for Featured Image input
+            const imageInput = document.getElementById('featured_image');
+            const previewContainer = document.getElementById('image-preview-container');
+            const previewImg = document.getElementById('image-preview-img');
+            const removeBtn = document.getElementById('remove-image-btn');
+
+            if (imageInput) {
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        if (!file.type.startsWith('image/')) {
+                            alert('Silakan pilih file gambar yang valid.');
+                            imageInput.value = '';
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = function(evt) {
+                            previewImg.src = evt.target.result;
+                            previewContainer.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            if (removeBtn) {
+                removeBtn.addEventListener('click', function() {
+                    imageInput.value = '';
+                    previewImg.src = '';
+                    previewContainer.classList.add('hidden');
+                });
+            }
         });
     </script>
 
@@ -98,6 +158,19 @@
 
                             <div>
                                 <label for="featured_image" class="block text-sm font-medium text-slate-700 mb-1">Gambar Utama (Featured Image)</label>
+                                
+                                <div id="image-preview-container" class="hidden mb-3">
+                                    <div class="relative group">
+                                        <img id="image-preview-img" src="" alt="Preview" class="w-full h-36 object-cover rounded-lg border border-slate-200 shadow-sm">
+                                    </div>
+                                    <div class="flex justify-between items-center mt-1.5">
+                                        <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">Pratinjau Gambar</span>
+                                        <button type="button" id="remove-image-btn" class="text-xs text-rose-600 hover:text-rose-800 font-semibold underline">
+                                            Hapus / Batal
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <input type="file" name="featured_image" id="featured_image" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/svg+xml" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-apjii-subtle file:text-apjii-blue hover:file:bg-apjii-blue hover:file:text-white transition">
                                 <p class="mt-1 text-xs text-slate-500">Hanya format gambar yang diperbolehkan (PNG, JPG, JPEG, WEBP, SVG, GIF, maks 4MB).</p>
                                 @error('featured_image')

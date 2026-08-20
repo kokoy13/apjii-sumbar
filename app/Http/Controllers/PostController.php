@@ -94,4 +94,17 @@ class PostController extends Controller
 
         return redirect()->route('admin.posts.index')->with('success', 'Berita / Artikel berhasil dihapus.');
     }
+
+    public function uploadImage(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|mimes:png,jpg,jpeg,webp,gif,svg|max:4096',
+        ]);
+
+        $path = $request->file('file')->store('posts/editor', 'public');
+
+        return response()->json([
+            'location' => asset('storage/' . $path),
+        ]);
+    }
 }

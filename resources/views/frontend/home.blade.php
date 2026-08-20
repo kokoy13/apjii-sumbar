@@ -145,8 +145,8 @@
             @forelse($latestPosts as $post)
                 <article class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-card transition-all duration-300 border border-slate-100 flex flex-col group">
                     <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        @if($post->featured_image)
-                            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        @if($post->featured_image_url)
+                            <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         @else
                             <div class="w-full h-full bg-gradient-to-tr from-slate-200 to-slate-100 flex items-center justify-center text-slate-400 text-sm font-medium">
                                 APJII Sumbar

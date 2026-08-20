@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     // Grup untuk semua fitur Admin (URL menggunakan /admin/..., Name menggunakan admin....)
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class)->except(['show']);
+        Route::post('posts/upload-image', [PostController::class, 'uploadImage'])->name('posts.upload-image');
         Route::resource('posts', PostController::class)->except(['show']);
         
         // Rute CRUD untuk Dokumen Unduhan

@@ -31,4 +31,21 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getFeaturedImageUrlAttribute(): ?string
+    {
+        if (!$this->featured_image) {
+            return null;
+        }
+
+        if (str_starts_with($this->featured_image, 'http://') || str_starts_with($this->featured_image, 'https://')) {
+            return $this->featured_image;
+        }
+
+        if (str_starts_with($this->featured_image, 'storage/')) {
+            return asset($this->featured_image);
+        }
+
+        return asset('storage/' . $this->featured_image);
+    }
 }
